@@ -49,7 +49,6 @@ namespace Senparc.Weixin.Entities
         /// 返回代码
         /// </summary>
         public ReturnCode_QY errcode { get; set; }
-
         /// <summary>
         /// 返回消息代码数字（同errcode枚举值）
         /// </summary>
