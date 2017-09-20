@@ -421,7 +421,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Senparc.Weixin\Senparc.Weixin\Senparc.Weixin.csproj" />
+    <ProjectReference Include="..\..\Senparc.Weixin\Senparc.Weixin\Senparc.Weixin.vs2017.csproj" />
   </ItemGroup>
 
   <!--<ItemGroup>
