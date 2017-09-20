@@ -648,38 +648,36 @@ namespace Senparc.Weixin.Work.AdvancedAPIs
         /// <param name="safe">表示是否是保密消息，0表示否，1表示是，默认0</param>
         /// <param name="timeOut">代理请求超时时间（毫秒）</param>
         /// <returns></returns>
-        public static async Task<MassResult> SendMpNewsAsync(string accessTokenOrAppKey, string toUser, string toParty, string toTag, string agentId, List<MpNewsArticle> articles, int safe = 0, int timeOut = Config.TIME_OUT)
+        public static async Task<MassResult> SendMpNewsAsync(string accessTokenOrAppKey, string toUser, string toParty,
+            string toTag, string agentId, List<MpNewsArticle> articles, int safe = 0, int timeOut = Config.TIME_OUT)
         {
             return await ApiHandlerWapper.TryCommonApiAsync(async accessToken =>
-            {
-                var data = new
                 {
-                    touser = toUser,
-                    toparty = toParty,
-                    totag = toTag,
-                    msgtype = "mpnews",
-                    agentid = agentId,
-                    mpnews = new
+                    var data = new
                     {
-                        articles = articles.Select(z => new
+                        touser = toUser,
+                        toparty = toParty,
+                        totag = toTag,
+                        msgtype = "mpnews",
+                        agentid = agentId,
+                        mpnews = new
                         {
-                            title = z.title,
-                            thumb_media_id = z.thumb_media_id,
-                            author = z.author,
-                            content_source_url = z.content_source_url,
-                            content = z.content,
-                            digest = z.digest,
-                            show_cover_pic = z.show_cover_pic
-                        }).ToList(),
-                    },
-                    safe = safe
-                };
-                return await Senparc.Weixin.CommonAPIs.CommonJsonSend.SendAsync<MassResult>(accessToken, URL_FORMAT, data, CommonJsonSendType.POST, timeOut);
-            }, accessTokenOrAppKey);
-
-
-                return await Senparc.Weixin.CommonAPIs.CommonJsonSend.SendAsync<MassResult>(accessToken, URL_FORMAT, data, CommonJsonSendType.POST, timeOut);
-            }, accessTokenOrAppKey);
+                            articles = articles.Select(z => new
+                            {
+                                title = z.title,
+                                thumb_media_id = z.thumb_media_id,
+                                author = z.author,
+                                content_source_url = z.content_source_url,
+                                content = z.content,
+                                digest = z.digest,
+                                show_cover_pic = z.show_cover_pic
+                            }).ToList(),
+                        },
+                        safe = safe
+                    };
+                    return await Senparc.Weixin.CommonAPIs.CommonJsonSend.SendAsync<MassResult>(accessToken, URL_FORMAT,
+                        data, CommonJsonSendType.POST, timeOut);
+                }, accessTokenOrAppKey);
         }
 
         /// <summary>
